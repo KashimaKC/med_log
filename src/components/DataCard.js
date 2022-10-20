@@ -2,6 +2,11 @@ import React from "react";
 import { Text, View } from "react-native";
 import { cardStyles } from "../styles/styles";
 
+/*
+    This renders out the actual data in a "card" format. it takes in item as a parameter which is the data
+    returned from the API.
+*/
+
 const DataCard = ({ item }) => {
 
     return(

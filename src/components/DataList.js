@@ -4,10 +4,16 @@ import API from "../scripts/API";
 import DataCard from "./DataCard";
 import { styles, listStyles } from "../styles/styles";
 
+/* 
+    This is the component for the data list. It renders the flatlist with the data recieved
+    from the API.
+*/
+
 const DataList = () => {
 
     const [data, setData] = useState();
 
+    //onload get api information
     useEffect(() => {
         const getData = async () => {
             setData(await API.getListData());

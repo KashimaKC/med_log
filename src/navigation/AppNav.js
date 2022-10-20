@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import { Text, Button } from "react-native";
+import { Text, Button, View, TouchableHighlight } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "../screens/Home/Home.js"
 import DataLog from "../screens/LogData/DataLog.js";
+
+/* 
+    this handles all the of home navigation.
+*/
 
 const NavStack = createNativeStackNavigator();
 
@@ -16,12 +21,19 @@ function App() {
                 <NavStack.Screen 
                     name="MedLog" 
                     component={Home}
-                    options={{
+                    options={({navigation}) => ({
                         headerTitle: "MedLog",
                         headerRight : () => (
-                            <Button title="Settings" color='black'/>
+                            <View>
+                                <TouchableHighlight onPress={() => navigation.navigate('Settings')}>
+                                    <Ionicons name="settings-sharp" style={{
+                                        fontSize: 25
+                                    }}/>
+                                </TouchableHighlight>
+                            </View>
+                            
                         )
-                    }}    
+                    })}    
                 />
                 <NavStack.Screen name="DataLog" component={DataLog}/>
                 
