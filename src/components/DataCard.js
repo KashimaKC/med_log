@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import API from "../scripts/API";
-import { Text, View, TouchableHighlight } from "react-native";
+import { Text, View, TouchableHighlight, Alert } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { cardStyles } from "../styles/styles";
 
@@ -12,8 +12,16 @@ import { cardStyles } from "../styles/styles";
 const DataCard = ({ item }) => {
 
     const deleteEntry = (key) => {
-
-        API.removeData(key);
+        //displays an alert while cancelling, confirms if user wants to remove the entry. 
+        Alert.alert(
+            'Entry Removal',
+            'Are you sure you want to remove the entry?',
+            [
+                {text: 'dont delete!', onPress: () => console.log('delete cancelled')},
+                {text: 'okay', onPress: () => API.removeData(key)},
+            ],
+            {cancelable: false},
+        )
     }
 
     return(
