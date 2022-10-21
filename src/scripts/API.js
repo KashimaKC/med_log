@@ -6,7 +6,7 @@ import API_SECRET from '../scripts/secret/keys'
 const getListData = async () => {
     const resp = await fetch('http:192.168.1.31/?REQUEST');
     const json = await resp.json();
-    return json;
+    return json.reverse();
 }
 
 function postData(dateData, noteData, painData) {
@@ -18,9 +18,13 @@ function postData(dateData, noteData, painData) {
 
 function removeData(key) {
     
+    fetch(`http://192.168.1.31/?DEL/${key}`);
+
+    console.log('removed ' + key);
 }
 
 export default { 
     getListData: getListData,
-    postData: postData 
+    postData: postData,
+    removeData: removeData 
 }

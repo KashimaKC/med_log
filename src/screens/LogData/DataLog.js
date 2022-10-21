@@ -45,7 +45,7 @@ const DataLog = ({ navigation }) => {
 
     return(
         <View>
-            <View style={[cardStyles.cardContainer, entryStlyes.dataEntryContainer]}>
+            <View style={[cardStyles.cardContainer('column'), entryStlyes.dataEntryContainer]}>
                 <Text style={cardStyles.cardText}>New Entry Log: </Text>
 
                 <View>
@@ -108,10 +108,10 @@ const DataLog = ({ navigation }) => {
 
             </View>
             
-            <View style={[cardStyles.cardContainer, entryStlyes.dataEntryContainer]}>
-                <Text style={cardStyles.cardText}>Summary: {noteData}</Text>
-                <Text style={cardStyles.cardText}>Date: {dateData}</Text>
-                <Text style={cardStyles.cardText}>Pain Rating: {painData}</Text>
+            <View style={[cardStyles.cardContainer('column'), entryStlyes.dataEntryContainer]}>
+                <Text style={[cardStyles.cardText, entryStlyes.summaryCard]}>Summary: {noteData}</Text>
+                <Text style={[cardStyles.cardText, entryStlyes.summaryCard]}>Date: {dateData}</Text>
+                <Text style={[cardStyles.cardText, entryStlyes.summaryCard]}>Pain Rating: {painData}</Text>
             </View>
         </View>
         

@@ -20,7 +20,6 @@ const DataList = (reduce) => {
         }
 
         getData();
-        
     }, [reduce]);
 
     return (

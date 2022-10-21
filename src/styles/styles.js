@@ -30,18 +30,44 @@ const listStyles = StyleSheet.create({
 });
 
 const cardStyles = StyleSheet.create({
-    cardContainer : {
+    cardContainer : orientation => ({
         display: 'flex',
+        flexDirection: orientation === 'column' ? 'column' : 'row',
+        justifyContent: 'space-between',
         backgroundColor: '#2b2b2b',
         marginBottom: 5,
         borderRadius: 10,
-    },
+    }),
     cardText : {
         paddingTop: 5,
         paddingBottom: 5,
         paddingLeft: 10,
         color: 'white',
         fontSize: 16
+    },
+    cardInfo : {
+        margin: 5,
+    },
+    cardButtons : {
+        display: 'flex',
+        flexDirection: 'column',
+        marginTop: 5,
+        marginBottom: 5,
+        marginRight: 10,
+        justifyContent: 'center'
+    },
+    buttonContainer : color => ({
+        height: 45,
+        width: 45,
+        margin: 5,
+        backgroundColor: color === 'red' ? 'red' : blueColor,
+        borderRadius: 6,
+        justifyContent: 'center'
+    }),
+    buttonContent : {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 24
     }
 });
 
@@ -118,10 +144,21 @@ const entryStlyes = {
         height: 35,
         justifyContent: 'center',
         borderRadius: 3,
-    })
+    }),
+    summaryCard : {
+        marginTop: 8,
+        marginBottom: 8
+    }
+}
+
+const confirmStyles = {
+    confirmContainer : {
+        zIndex: 2,
+        position: 'absolute'
+    }
 }
 
 export { 
     styles, listStyles, cardStyles,
-    buttonStyles, entryStlyes 
+    buttonStyles, entryStlyes, confirmStyles 
 };
