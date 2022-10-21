@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, View, Text, Item } from "react-native";
+import { FlatList, View, TouchableWithoutFeedback, SafeAreaView} from "react-native";
 import API from "../scripts/API";
 import DataCard from "./DataCard";
 import { styles, listStyles } from "../styles/styles";
@@ -9,7 +9,7 @@ import { styles, listStyles } from "../styles/styles";
     from the API.
 */
 
-const DataList = () => {
+const DataList = (reduce) => {
 
     const [data, setData] = useState();
 
@@ -20,16 +20,17 @@ const DataList = () => {
         }
 
         getData();
-    }, []);
+        
+    }, [reduce]);
 
     return (
-        <View style={listStyles.listContainer}>
+            <View style={listStyles.listContainer}>
             <FlatList
                 data={data}
                 renderItem={DataCard}
                 keyExtractor={item => item.id}
             />
-        </View>
+            </View>
     )
 }
 

@@ -1,3 +1,4 @@
+import API_SECRET from '../scripts/secret/keys'
 
 //using this async format now to avoid .then chains. luckily it seems like it 
 //is returning correctly... for now
@@ -8,11 +9,18 @@ const getListData = async () => {
     return json;
 }
 
-function setListData() {
+function postData(dateData, noteData, painData) {
 
+    fetch(`http://192.168.1.31/?POST/${dateData}/${painData}/${noteData}`);
+
+    console.log(dateData, noteData, painData);
+}
+
+function removeData(key) {
+    
 }
 
 export default { 
     getListData: getListData,
-    setListData: setListData 
+    postData: postData 
 }
