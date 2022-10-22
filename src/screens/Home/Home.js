@@ -1,12 +1,23 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, useRef } from "react";
 import { View, Text, TouchableHighlight } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import DataList from "../../components/DataList"
+import DataList from "../../components/DataList";
+import API from "../../scripts/API";
 import { styles, buttonStyles } from "../../styles/styles";
 
-const Home = ({ navigation }) => {
+const Home = ({ route, navigation }) => {
 
-    const [state, updateState] = useState(1); 
+    const [state, updateState] = useState(0);
+    const [APIData, setAPIData] = useState();
+
+
+    useEffect(() => {
+        const getData = async () => {
+            setAPIData(await API.getListData());
+        }
+
+        getData();
+    }, []);
 
     return(
 
@@ -20,11 +31,11 @@ const Home = ({ navigation }) => {
                     </TouchableHighlight>
 
                     {/* route this to the data display when the component gets created */}
-                    <TouchableHighlight onPress={() => navigation.navigate('DataDisplay')} style={buttonStyles.logButton('teal')}>
+                    <TouchableHighlight onPress={() => navigation.navigate('DataDisplay', {APIData: APIData})} style={buttonStyles.logButton('teal')}>
                         <Text style={buttonStyles.buttonContent}>View Data</Text>
                     </TouchableHighlight>
 
-                    <TouchableHighlight onPress={() => updateState(state + 1)} style={buttonStyles.logButton('blue', true)}>
+                    <TouchableHighlight onPress={() => [updateState(state + 1), console.log("state: " + state)]} style={buttonStyles.logButton('blue', true)}>
                         <Ionicons name="refresh-sharp" style={buttonStyles.buttonContent}></Ionicons>
                     </TouchableHighlight>
 

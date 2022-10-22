@@ -158,7 +158,26 @@ const confirmStyles = {
     }
 }
 
+const settingsStyles = {
+    settingText: {
+        fontSize: 18
+    }
+}
+
+const chartStyles = {
+    chartContainer : {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        margin: 10,
+    },
+    chartStyle : { 
+        color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`
+    }
+}
+
 export { 
     styles, listStyles, cardStyles,
-    buttonStyles, entryStlyes, confirmStyles 
+    buttonStyles, entryStlyes, confirmStyles,
+    settingsStyles, chartStyles 
 };

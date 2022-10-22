@@ -24,6 +24,18 @@ const DataCard = ({ item }) => {
         )
     }
 
+    const displayDetail = (key) => {
+
+        Alert.alert(
+            'Entry Details',
+            `Entry id: ${item.id} \npainScale: ${item.painRating} \ndate: ${item.date}`,
+            [
+                {text: 'Back', onPress: () => console.log('exited details')},
+            ],
+            {cancelable: true},
+        )
+    }
+
     return(
         <View style={cardStyles.cardContainer('row')}>
             <View style={cardStyles.cardInfo}>
@@ -40,7 +52,10 @@ const DataCard = ({ item }) => {
                     <Ionicons name='close-sharp' style={cardStyles.buttonContent} />
                 </TouchableHighlight>
 
-                <TouchableHighlight style={cardStyles.buttonContainer('teal')}>
+                <TouchableHighlight 
+                    style={cardStyles.buttonContainer('teal')}
+                    onPress={() => displayDetail(item.id)}
+                >
                     <Ionicons name='ellipsis-horizontal-sharp' style={cardStyles.buttonContent} />
                 </TouchableHighlight>
             </View>

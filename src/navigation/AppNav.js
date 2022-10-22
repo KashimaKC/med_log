@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "../screens/Home/Home.js"
 import DataLog from "../screens/LogData/DataLog.js";
+import Settings from "../screens/Settings/Settings.js";
+import DataDisplay from "../screens/DataDisplay/DataDisplay.js"
 
 /* 
     this handles all the of home navigation.
@@ -36,6 +38,8 @@ function App() {
                     })}    
                 />
                 <NavStack.Screen name="DataLog" component={DataLog}/>
+                <NavStack.Screen name="Settings" component={Settings} />
+                <NavStack.Screen name="DataDisplay" component={DataDisplay} />
                 
             </NavStack.Navigator>
 
