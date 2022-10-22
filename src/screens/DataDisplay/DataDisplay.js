@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { View, Text, Dimensions } from "react-native";
+import { View, Text, Dimensions, TouchableHighlight } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { chartStyles } from "../../styles/styles";
-import API from "../../scripts/API";
 
 const screenWidth = Dimensions.get("window").width / 1.1;
 
@@ -19,16 +18,14 @@ const screenWidth = Dimensions.get("window").width / 1.1;
 
 const DataDisplay = ({ route }) => {
 
-    const [chartData, setChartData] = useState();
-    const [labelData, setLabelData] = useState();  
+    const { APIData, Reduce } = route.params;
 
-    const { APIData } = route.params;
-    const chartPoints = Number(APIData[0].painRating);
-    const test = [1, 2, 3]
+    const [dataPayload, setDataPayload] = useState({});
 
     useEffect(() => {
-        //extractDataPoints(4);
-    }, []);
+        setDataPayload(APIData);
+        console.log("Reduce: " + Reduce);
+    }, [Reduce]);
 
     const extractDataPoints = (num) => {
         let pointArray = [];
@@ -67,9 +64,10 @@ const DataDisplay = ({ route }) => {
                 height={200}
                 chartConfig={chartStyles.chartStyle}
                 bezier
+                fromZero
             />
             <Text>
-                {JSON.stringify(APIData, null, 4)}
+                {JSON.stringify(dataPayload, null, 4)}
             </Text>
         </View>
     )

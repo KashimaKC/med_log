@@ -31,7 +31,7 @@ const Home = ({ route, navigation }) => {
                     </TouchableHighlight>
 
                     {/* route this to the data display when the component gets created */}
-                    <TouchableHighlight onPress={() => navigation.navigate('DataDisplay', {APIData: APIData})} style={buttonStyles.logButton('teal')}>
+                    <TouchableHighlight onPress={() => navigation.navigate('DataDisplay', {APIData: APIData, Reduce: state + 1})} style={buttonStyles.logButton('teal')}>
                         <Text style={buttonStyles.buttonContent}>View Data</Text>
                     </TouchableHighlight>
 
