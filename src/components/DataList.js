@@ -12,6 +12,7 @@ import { styles, listStyles } from "../styles/styles";
 const DataList = (reduce) => {
 
     const [data, setData] = useState();
+    const [state, setState] = useState(0);
 
     //onload get api information
     useEffect(() => {
@@ -28,6 +29,7 @@ const DataList = (reduce) => {
                 data={data}
                 renderItem={DataCard}
                 keyExtractor={item => item.id}
+                extraData={state}
             />
             </View>
     )

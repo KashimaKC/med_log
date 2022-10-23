@@ -20,12 +20,14 @@ const DataDisplay = ({ route }) => {
 
     const { APIData, Reduce } = route.params;
 
-    const [dataPayload, setDataPayload] = useState({});
+    const [textData, setText] = useState('');
 
     useEffect(() => {
-        setDataPayload(APIData);
-        console.log("Reduce: " + Reduce);
-    }, [Reduce]);
+        //add text change here when it gets called so that it can be rerendered. basically just add everything that
+        //gets changed since this is actually correctly being called.
+        getStringData();
+        console.log(APIData);
+    }, [route.params]);
 
     const extractDataPoints = (num) => {
         let pointArray = [];
@@ -43,6 +45,13 @@ const DataDisplay = ({ route }) => {
             dataLabelArray.push(APIData[i].date);
         }
         return dataLabelArray
+    }
+
+    const getStringData = () => {
+        let str = JSON.stringify(APIData, null, 4);
+
+        setText(str);
+        console.log(str);
     }
 
     const chart = {
@@ -67,7 +76,7 @@ const DataDisplay = ({ route }) => {
                 fromZero
             />
             <Text>
-                {JSON.stringify(dataPayload, null, 4)}
+                {textData}
             </Text>
         </View>
     )

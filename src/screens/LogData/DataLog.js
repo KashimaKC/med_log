@@ -8,6 +8,7 @@ const DataLog = ({ navigation }) => {
     const [dateData, setDateData] = useState('')
     const [noteData, setNoteData] = useState('');
     const [painData, setPainData] = useState(1);
+    const [reduce, setReduce] = useState(0);
 
     useEffect(() => {
         setDateData(getDate());
@@ -40,7 +41,9 @@ const DataLog = ({ navigation }) => {
     //passes in the data entered on the page and redirects to the home page.
     const submitData = (dateData, noteData, painData) => {
         API.postData(dateData, noteData, painData);
-        navigation.navigate('MedLog')
+        setReduce(reduce + 1);
+        //added the counter prop so that it updates the home page automatically upon submit.
+        navigation.navigate('MedLog', {Counter: reduce + 1})
     }
 
     return(
